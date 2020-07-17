@@ -41,6 +41,19 @@
         {{ end }}
       <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }} class="btn btn-lg {{if $bg.text_color_light}}btn-outline-light{{else}}btn-outline-primary{{end}} page-scroll">{{ if $page.Params.btn_alt.icon }}<i class="{{ $pack }} {{ $pack_prefix }}-{{ $page.Params.btn_alt.icon }} mr-2" aria-hidden="true"></i>{{end}}{{ $page.Params.btn_alt.label | markdownify | emojify | safeHTML }}</a>
       {{ end }}
+
+      {{ if $page.Params.btn_alt1.url }}
+        {{ $link := $page.Params.btn_alt1.url }}
+        {{ $scheme := (urls.Parse $link).Scheme }}
+        {{ $target := "" }}
+        {{ if not $scheme }}
+          {{ $link = $link | relLangURL }}
+        {{ else if in (slice "http" "https") $scheme }}
+          {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
+        {{ end }}
+      <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }} class="btn btn-lg {{if $bg.text_color_light}}btn-outline-light{{else}}btn-outline-primary{{end}} page-scroll">{{ if $page.Params.btn_alt1.icon }}<i class="{{ $pack }} {{ $pack_prefix }}-{{ $page.Params.btn_alt1.icon }} mr-2" aria-hidden="true"></i>{{end}}{{ $page.Params.btn_alt1.label | markdownify | emojify | safeHTML }}</a>
+      {{ end }}
+
     </p>
     {{ end }}
 
