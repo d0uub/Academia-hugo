@@ -417,6 +417,7 @@
         mermaid.initialize({
           theme: 'dark'
         });
+        mermaid.init(".language-mermaid");
       }
       $('.js-dark-toggle i').removeClass('fa-moon').addClass('fa-sun');
     } else {
@@ -429,6 +430,7 @@
         mermaid.initialize({
           theme: 'default'
         });
+        mermaid.init(".language-mermaid");
       }
       $('.js-dark-toggle i').removeClass('fa-sun').addClass('fa-moon');
     }
